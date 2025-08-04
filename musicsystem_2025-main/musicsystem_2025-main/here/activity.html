@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Logbook System - Activity Log</title>
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Container */
+  .container {
+    display: flex;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 220px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.05);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebar .profile-icon {
+    background: #ff8aa4;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+  }
+  .sidebar h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .menu-section {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .menu-section h3 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    text-transform: uppercase;
+  }
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .menu-list li {
+    margin-bottom: 12px;
+  }
+  .menu-list li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 20px;
+    color: #ff5c8d;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  .menu-list li a:hover,
+  .menu-list li a.active {
+    background-color: #ff5c8d;
+    color: white;
+  }
+  .menu-list li a svg {
+    margin-right: 10px;
+    fill: currentColor;
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Main content */
+  .main-content {
+    flex-grow: 1;
+    margin-left: 30px;
+    background: white;
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 0.05);
+  }
+  .main-content h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .main-content p.description {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 25px;
+  }
+
+  /* Filters box */
+  .filters-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 30px;
+  }
+  .filters-header {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #ff5c8d;
+  }
+  .filters-header svg {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    fill: #ff5c8d;
+  }
+  .filter-buttons {
+    margin-bottom: 15px;
+  }
+  .filter-buttons button {
+    border: none;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 10px;
+    background: #f0f0f0;
+    color: #555;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .filter-buttons button.active,
+  .filter-buttons button:hover {
+    background: #ff5c8d;
+    color: white;
+  }
+
+  /* Filter form */
+  .filter-form {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    color: #555;
+  }
+  .filter-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  select, input[type="text"] {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 160px;
+  }
+  input[type="text"] {
+    width: 220px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead {
+    background: #fafafa;
+  }
+  thead th {
+    text-align: left;
+    padding: 12px 10px;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+  }
+  tbody tr {
+    border-bottom: 1px solid #eee;
+  }
+  tbody tr:nth-child(even) {
+    background: #fafafa;
+  }
+  tbody td {
+    padding: 10px;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile-icon" aria-label="User profile icon">👤</div>
+      <h2>Logbook System</h2>
+
+      <nav class="menu-section" aria-label="Main menu">
+        <ul class="menu-list">
+          <li><a href="#" aria-current="page" class="active">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            Home
+          </a></li>
+          <li><a href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14l5-5 5 5z"/></svg>
+            Rooms
+          </a></li>
+          <li><a href="#" class="active">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v1m0 14v1m8-8h1M3 12H2m15.364-6.364l.707.707M6.343 17.657l-.707.707m12.728 0l-.707.707M6.343 6.343l-.707-.707"/></svg>
+            Activity Log
+          </a></li>
+          <li><a href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h2v-2H3v2zm4 0h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2z"/></svg>
+            Reports
+          </a></li>
+        </ul>
+      </nav>
+
+      <nav class="menu-section" aria-label="Student menu">
+        <h3>Student</h3>
+        <ul class="menu-list">
+          <li><a href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0113 0"/></svg>
+            Information
+          </a></li>
+        </ul>
+      </nav>
+
+      <nav class="menu-section" aria-label="Inventory menu">
+        <h3>Inventory</h3>
+        <ul class="menu-list">
+          <li><a href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="10" rx="2"/></svg>
+            Inventory
+          </a></li>
+        </ul>
+      </nav>
+
+      <nav class="menu-section" aria-label="Settings menu">
+        <h3>Settings</h3>
+        <ul class="menu-list">
+          <li><a href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33h.09a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51h.09a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v.09a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Account
+          </a></li>
+          <li><a href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H7a2 2 0 01-2-2v-4h2v4h2v-4h2v4a2 2 0 01-2 2zm6-10v-2a4 4 0 00-8 0v2H5v10h14V11h-4zm-2 0v-2a2 2 0 114 0v2h-4z"/></svg>
+            Log out
+          </a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content" role="main" aria-label="Activity Log">
+      <h1>Activity Log</h1>
+      <p class="description">Track your room booking requests, instrument borrowing requests, confirmations, and updates—all in one place.</p>
+
+      <section class="filters-box" aria-label="Filters">
+        <div class="filters-header">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h2v-2H3v2zm4 0h14v-2H7v2zm-4-6h14v-2H3v2zm4-6h10V3H7v2z"/></svg>
+          Filters:
+        </div>
+        <div class="filter-buttons" role="group" aria-label="Filter by Cubicle type">
+          <button type="button" class="active">Cubicles</button>
+          <button type="button">Instrument</button>
+        </div>
+        <form class="filter-form" aria-label="Filter form">
+          <div class="filter-group">
+            <label for="cubicle-type">Cubicle type</label>
+            <select id="cubicle-type" name="cubicle-type">
+              <option>All</option>
+              <option>Guitar</option>
+              <option>Piano</option>
+              <option>Drums</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="date-range">Date</label>
+            <input type="text" id="date-range" name="date-range" value="07/12/2025 - 07/12/2025" />
+          </div>
+        </form>
+      </section>
+
+      <section class="table-section" aria-label="Activity log table">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Yr & Sec</th>
+              <th>Cubicle Type</th>
+              <th>Cubicle No.</th>
+              <th>Time in</th>
+              <th>Time out</th>
+              <th>Hours Consumed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Sample rows -->
+            <tr>
+              <td>Renz Xaviery O. Pastrana</td>
+              <td>BSIT-2B</td>
+              <td>Guitar</td>
+              <td>1</td>
+              <td>2025-03-15 10:30 AM</td>
+              <td>2025-03-15 12:30 AM</td>
+              <td>2 hrs</td>
+            </tr>
+            <tr>
+              <td>Renz Xaviery O. Pastrana</td>
+              <td>BSIT-2B</td>
+              <td>Guitar</td>
+              <td>1</td>
+              <td>2025-03-15 10:30 AM</td>
+              <td>2025-03-15 12:30 AM</td>
+              <td>2 hrs</td>
+            </tr>
+            <tr>
+              <td>Renz Xaviery O. Pastrana</td>
+              <td>BSIT-2B</td>
+              <td>Guitar</td>
+              <td>1</td>
+              <td>2025-03-15 10:30 AM</td>
+              <td>2025-03-15 12:30 AM</td>
+              <td>2 hrs</td>
+            </tr>
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

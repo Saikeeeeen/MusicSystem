@@ -1,0 +1,119 @@
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #fafafa;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+/* Removed .container as it's now handled by inline styles in Rooms.tsx */
+
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+p.description {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #ff5c8d; /* Using the pink color from ActivityLog.css */
+}
+
+.section-header svg {
+  margin-right: 16px; /* Increased margin-right */
+  width: 44px; /* Increased width */
+  height: 44px; /* Increased height */
+  fill: #ff5c8d; /* Using the pink color from ActivityLog.css */
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #888;
+}
+
+.table-section table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  border: 1px solid #ddd; /* Added border for card-like appearance */
+  border-radius: 8px; /* Added border-radius for card-like appearance */
+  overflow: hidden; /* Ensures border-radius applies to table content */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Added box-shadow for card-like appearance */
+  margin-bottom: 30px; /* Spacing between sections */
+}
+
+.table-section thead {
+  background: #fafafa;
+}
+
+.table-section thead th {
+  text-align: left;
+  padding: 12px 10px;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+
+.table-section tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.table-section tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.table-section tbody td {
+  padding: 10px;
+  color: #666;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  padding-bottom: 10px; /* Added padding for pagination */
+}
+
+.pagination button {
+  border: 1px solid #bbb;
+  background: #fff;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.pagination button:hover {
+  background: #f2f2f2;
+}
+
+.pagination span {
+  font-size: 13px;
+  color: #888;
+  min-width: 50px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Icon colors */
+.icon-pink {
+  color: #ff6fae;
+}

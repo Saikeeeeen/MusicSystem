@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Information Table</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #faf9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 32px 24px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .desc {
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+    .filters-usage {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: #faf9fa;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 18px;
+      border: 1px solid #f0f0f0;
+    }
+    .filters select {
+      padding: 6px 18px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      margin-right: 8px;
+      font-size: 1rem;
+    }
+    .usage-levels {
+      font-size: 0.95rem;
+    }
+    .usage-dot {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .dot-green { background: #b6f5c6; border: 1px solid #4ecb71;}
+    .dot-yellow { background: #fff7b2; border: 1px solid #ffe066;}
+    .dot-orange { background: #ffe6a7; border: 1px solid #ffb347;}
+    .dot-red { background: #ffd6d6; border: 1px solid #ff6b6b;}
+    .actions {
+      margin-bottom: 10px;
+    }
+    .actions button {
+      background: #ff6baf;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-size: 1rem;
+      margin-right: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .actions button:last-child {
+      background: #ff6b6b;
+    }
+    .search-bar {
+      float: right;
+      margin-bottom: 10px;
+    }
+    .search-bar input {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.98rem;
+    }
+    th, td {
+      padding: 10px 8px;
+      text-align: left;
+    }
+    th {
+      background: #faf9fa;
+      color: #888;
+      font-weight: 600;
+      font-size: 0.97rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    /* Row color coding */
+    .row-green { background: #eafaf1; }
+    .row-yellow { background: #fffbe6; }
+    .row-orange { background: #fff5e6; }
+    .row-red { background: #ffeaea; color: #d7263d; font-weight: 600;}
+    tr:not(:last-child) td { border-bottom: 1px solid #f0f0f0; }
+    @media (max-width: 700px) {
+      .container { padding: 10px 2px; }
+      .filters-usage { flex-direction: column; gap: 10px;}
+      .search-bar { float: none; display: block; margin-bottom: 10px;}
+      table, thead, tbody, th, td, tr { display: block; }
+      th, td { padding: 8px 4px; }
+      th { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Student Information</h2>
+    <div class="desc">
+      Keep all your student details—name, ID, section, year, and email—organized and accessible in one convenient place.
+    </div>
+    <div class="filters-usage">
+      <div class="filters">
+        <label>Filters:</label>
+        <select>
+          <option>Year</option>
+        </select>
+        <select>
+          <option>Section</option>
+        </select>
+      </div>
+      <div class="usage-levels">
+        <div><span class="usage-dot dot-green"></span>8 - 5hrs left</div>
+        <div><span class="usage-dot dot-yellow"></span>4 - 3hrs left</div>
+        <div><span class="usage-dot dot-orange"></span>2 - 1hr left</div>
+        <div><span class="usage-dot dot-red"></span>Less than 1hr left</div>
+      </div>
+    </div>
+    <div class="actions">
+      <button>Add student</button>
+      <button>Remove student</button>
+      <span class="search-bar">
+        <input type="text" placeholder="Search...">
+      </span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>STUDENT ID</th>
+          <th>NAME</th>
+          <th>COURSE/PROGRAM</th>
+          <th>YR&SEC</th>
+          <th>REMAINING MTL SESSION TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-green">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>2A</td>
+          <td>6.12 hrs left</td>
+        </tr>
+        <tr class="row-green">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>4A</td>
+          <td>6 hrs left</td>
+        </tr>
+        <tr class="row-yellow">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>3A</td>
+          <td>3 hrs left</td>
+        </tr>
+        <tr class="row-yellow">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>4A</td>
+          <td>3.76 hrs left</td>
+        </tr>
+        <tr class="row-red">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>1B</td>
+          <td>0.5 hrs left</td>
+        </tr>
+        <tr class="row-orange">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>2B</td>
+          <td>1.12 hrs left</td>
+        </tr>
+        <tr class="row-orange">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>2B</td>
+          <td>1.58 hrs left</td>
+        </tr>
+        <tr class="row-red">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>1B</td>
+          <td>0.9 hrs left</td>
+        </tr>
+        <tr class="row-yellow">
+          <td>230000001763</td>
+          <td>Renz Xaviery O. Pastrana</td>
+          <td>BSIT</td>
+          <td>2B</td>
+          <td>3.12 hrs left</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

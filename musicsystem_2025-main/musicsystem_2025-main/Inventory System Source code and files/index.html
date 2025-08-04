@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory System</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-circle"></div>
+        <h1 class="sidebar-title">Logbook System</h1>
+        <button id="toggleSidebar" class="chevron-btn" onclick="toggleSidebar()">
+          <svg viewBox="0 0 20 20"><polyline points="6 8 10 12 14 8"/></svg>
+        </button>
+      </div>
+      <div class="profile">
+        <div class="avatar"></div>
+        <h2>Inventory</h2>
+      </div>
+      <nav>
+        <div class="section-title">MENU</div>
+        <ul>
+          <li><a href="#"><svg></svg><span>Home</span></a></li>
+          <li><a href="#"><svg></svg><span>Rooms</span></a></li>
+          <li><a href="#"><svg></svg><span>History</span></a></li>
+          <li><a href="#"><svg></svg><span>Reports</span></a></li>
+        </ul>
+        <div class="section-title">STUDENT</div>
+        <ul>
+          <li><a href="#"><svg></svg><span>Information</span></a></li>
+        </ul>
+        <div class="section-title">INVENTORY</div>
+        <ul>
+          <li><a class="active" href="#"><svg></svg><span>Inventory</span></a></li>
+        </ul>
+        <div class="section-title">SETTINGS</div>
+        <ul>
+          <li><a href="#"><svg></svg><span>Account</span></a></li>
+        </ul>
+      </nav>
+      <div class="logout"><svg></svg> Log out</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <!-- Filter Buttons -->
+      <div class="filters">
+        <strong>Filters:</strong>
+        <button class="filter-btn active" onclick="filterResources('all', event)">All</button>
+        <button class="filter-btn" onclick="filterResources('instrument', event)">Instrument</button>
+        <button class="filter-btn" onclick="filterResources('tools', event)">Tools</button>
+        <button class="filter-btn" onclick="filterResources('advance', event)">Advance</button>
+      </div>
+
+      <div class="donut-chart-section">
+        <div class="donut-container relative" style="position: relative;">
+          <canvas id="donutChart"></canvas>
+          <button id="viewResourcesBtn"
+  onclick="showResources()"
+  style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+         background: transparent; border: none; color: #2c3e50; font-weight: 600;
+         font-size: 16px; cursor: pointer;">
+  View Resources
+</button>
+        </div>
+
+        <div class="donut-footer" style="display: flex; justify-content: space-between; align-items: center;">
+          <div class="donut-legend">
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #9fbffe;"></span>
+              <span>Available</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #2d62d3;"></span>
+              <span>Borrowed</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #ea5f5f;"></span>
+              <span>Under maintenance</span>
+            </div>
+          </div>
+
+          <button id="borrowedBtn"
+            onclick="showBorrowed()"
+            style="background-color: #ff6692; padding: 6px 12px; font-size: 13px; border: none; border-radius: 6px; color: white; cursor: pointer;">
+            Borrowed
+          </button>
+        </div>
+      </div>
+
+      <!-- Borrowed Section -->
+      <div id="borrowedSection">
+        <h2>Borrowed</h2>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search..." /></div>
+        <table>
+          <thead>
+            <tr>
+              <th>EQUIPMENT NO.</th>
+              <th>EQUIPMENT</th>
+              <th>OCCUPANT NAME</th>
+              <th>YR & SEC</th>
+              <th>DATE</th>
+              <th>TIME</th>
+              <th>BORROW REFERENCE</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>GUITAR</td>
+              <td>Renz Xaviery O. Pastrana</td>
+              <td>BSIT-2B</td>
+              <td>04/01/25</td>
+              <td>5:00 PM</td>
+              <td>P1002296</td>
+              <td>
+                <button class="edit-btn">✏️</button>
+                <button class="check-btn">✅</button>
+              </td>
+            </tr>
+             <tr>
+              <td>2</td>
+              <td>SPEAKER</td>
+              <td>Walben P. Benogsudan</td>
+              <td>BSIT-2B</td>
+              <td>03/30/25</td>
+              <td>2:00 PM</td>
+              <td>P1002297</td>
+              <td>
+                 <button class="edit-btn">✏️</button>
+                 <button class="check-btn">✅</button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Resources Section -->
+        <div id="resourcesSection" style="display: none;">
+        <h2>Resources</h2>
+        <div class="search-container"><input type="text" class="search-input" placeholder="Search..." /></div>
+        <table>
+          <thead>
+            <tr>
+              <th>EQUIPMENT NO.</th>
+              <th>EQUIPMENT TYPE</th>
+              <th>EQUIPMENT</th>
+              <th>STATE</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+  <tr>
+    <td>1</td>
+    <td>INSTRUMENT</td>
+    <td>GUITAR</td>
+    <td>IN GOOD CONDITION</td>
+    <td>
+      <span class="legend-color" style="background-color: #9fbffe;"></span> Available
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>INSTRUMENT</td>
+    <td>GUITAR</td>
+    <td>IN GOOD CONDITION</td>
+    <td>
+      <span class="legend-color" style="background-color: #2d62d3;"></span> Borrowed
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>INSTRUMENT</td>
+    <td>GUITAR</td>
+    <td>DAMAGED</td>
+    <td>
+      <span class="legend-color" style="background-color: #ea5f5f;"></span> Under Maintenance
+    </td>
+  </tr>
+</tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

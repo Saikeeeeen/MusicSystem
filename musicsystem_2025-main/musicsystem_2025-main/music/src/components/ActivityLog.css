@@ -1,0 +1,62 @@
+.date-range-picker-wrapper {
+  position: relative;
+}
+
+.date-range-input {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.date-range-input svg {
+  margin-right: 8px;
+}
+
+.date-range-picker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.done-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.done-button:hover {
+  background-color: #0056b3;
+}
+
+.time-range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between inputs and the hyphen */
+}
+
+.time-range-inputs input[type="time"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 150px; /* Increased width to accommodate AM/PM */
+}
+
+.time-range-inputs span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}

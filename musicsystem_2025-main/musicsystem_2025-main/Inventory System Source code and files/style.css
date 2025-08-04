@@ -1,0 +1,270 @@
+body, * {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  padding: 20px 0;
+  transition: width 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.logo-circle {
+  width: 56px;
+  height: 56px;
+  background: #ff6f9f;
+  border-radius: 50%;
+}
+
+.sidebar-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-left: 8px;
+  color: #22223b;
+}
+
+.chevron-btn {
+  margin-left: auto;
+  border: 2px solid #4e77ca;
+  background: #fff;
+  padding: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.profile {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.profile .avatar {
+  width: 48px;
+  height: 48px;
+  background: #FF6692;
+  border-radius: 50%;
+  margin: 0 auto 8px;
+}
+
+.sidebar nav .section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  padding: 0 24px;
+  margin: 20px 0 8px;
+  letter-spacing: 1px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 24px;
+  font-size: 14px;
+  color: #374151;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+  background: #FF6692;
+  color: white;
+}
+
+.logout {
+  padding: 10px 24px;
+  font-size: 14px;
+  color: #FF6692;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  padding: 8px 12px;
+  margin: 0 6px;
+  border: none;
+  background: #2d62d3;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background-color: #ff6692;
+}
+
+.donut-chart-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.donut-container {
+  width: 260px;
+  height: 260px;
+  position: relative;
+}
+
+#viewToggleBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #2c3e50;
+  cursor: pointer;
+}
+
+.donut-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 30px;
+}
+
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+}
+
+.search-btn {
+  padding: 8px 16px;
+  background-color: #2d62d3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.search-input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.borrowed-btn {
+  margin-top: 20px;
+  background: #e95885;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.borrowed-section,
+.resources-section {
+  transition: all 0.3s ease-in-out;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  margin-top: 12px;
+}
+
+th, td {
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+}
+
+th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+#viewResourcesBtn {
+  transition: opacity 0.3s ease;
+}
+
+#resourcesSection,
+#borrowedSection {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: none;
+}
+
+#resourcesSection.show,
+#borrowedSection.show {
+  display: block;
+  opacity: 1;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+  border-radius: 2px; /* Slightly rounded, or use 0 for sharp corners */
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.edit-btn, .check-btn {
+  padding: 5px 10px;
+  margin-right: 4px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #ffe066;
+}
+
+.check-btn:hover {
+  background-color: #90ee90;
+}

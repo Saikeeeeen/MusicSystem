@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Activity Log</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #fafbfc;
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 32px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 32px 32px 24px 32px;
+    }
+    h2 {
+      margin: 0 0 8px 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #222;
+    }
+    .subtitle {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .filters {
+      display: flex;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .filter-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #d23c7b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-label::before {
+      content: "⏳";
+      font-size: 18px;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .tab {
+      padding: 6px 22px;
+      border-radius: 8px;
+      border: none;
+      background: #f8d7e7;
+      color: #d23c7b;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .tab.active {
+      background: #d23c7b;
+      color: #fff;
+    }
+    .filter-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    select, .date-picker {
+      padding: 7px 12px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      background: #fafbfc;
+      font-size: 15px;
+      color: #444;
+      outline: none;
+      min-width: 160px;
+    }
+    .date-picker {
+      min-width: 220px;
+    }
+    .table-container {
+      margin-top: 16px;
+      border: 1px solid #ececec;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    thead {
+      background: #fafbfc;
+    }
+    th, td {
+      padding: 12px 9px;
+      text-align: left;
+    }
+    th {
+      font-weight: 600;
+      color: #444;
+      border-bottom: 1px solid #ececec;
+      font-size: 14px;
+    }
+    td {
+      color: #222;
+      border-bottom: 1px solid #f3f3f3;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    @media (max-width: 900px) {
+      .container {
+        padding: 16px 4px;
+      }
+      .filters {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .table-container {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Activity Log</h2>
+    <div class="subtitle">
+      Track your room booking requests, instrument borrowing requests, confirmations, and updates—all in one place.
+    </div>
+    <div class="filters">
+      <div class="filter-group">
+        <span class="filter-label">Filters:</span>
+        <div class="filter-tabs">
+          <button class="tab active">Cubicles</button>
+          <button class="tab">Instrument</button>
+        </div>
+      </div>
+      <div class="filter-row">
+        <select>
+          <option>All</option>
+        </select>
+        <select class="date-picker">
+          <option>07/12/2025 - 07/12/2025</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Yr & Sec</th>
+            <th>Cubicle Type</th>
+            <th>Cubicle No.</th>
+            <th>Time in</th>
+            <th>Time out</th>
+            <th>Hours Consumed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Repeat this row as needed -->
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <!-- Copy-paste the above <tr> for more rows as in your screenshot -->
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+          <tr>
+            <td>Renz Xaviery O. Pastrana</td>
+            <td>BSIT-2B</td>
+            <td>Guitar</td>
+            <td>1</td>
+            <td>2025-03-15 10:30 AM</td>
+            <td>2025-03-15 12:30 AM</td>
+            <td>2 hrs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

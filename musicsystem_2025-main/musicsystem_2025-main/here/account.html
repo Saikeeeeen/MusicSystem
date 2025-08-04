@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Account Details</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #f8f9fb;
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      margin-bottom: 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .subtitle {
+      color: #555;
+      font-size: 0.98rem;
+      margin-bottom: 30px;
+      margin-top: 8px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e3e3e3;
+      border-radius: 8px;
+      padding: 28px 28px 22px 28px;
+      margin-bottom: 24px;
+      box-sizing: border-box;
+    }
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      background: #ffe0ef;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #f47bb7;
+      border: 1.5px solid #f47bb7;
+    }
+    .profile-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .profile-buttons button {
+      border: 1px solid #f47bb7;
+      background: #fff;
+      color: #f47bb7;
+      border-radius: 6px;
+      padding: 6px 18px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .profile-buttons button:first-child {
+      background: #ffe0ef;
+      color: #f47bb7;
+      border: 1.5px solid #f47bb7;
+    }
+    .profile-buttons button:hover {
+      background: #f47bb7;
+      color: #fff;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .basic-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 24px;
+      margin-bottom: 18px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-size: 0.93rem;
+      color: #555;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .form-group input {
+      padding: 10px 14px;
+      border: 1.5px solid #e3e3e3;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #fafbfc;
+      color: #222;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .form-group input:focus {
+      border: 1.5px solid #f47bb7;
+    }
+    .edit-btn {
+      margin-top: 8px;
+      float: right;
+      border: 1.5px solid #f47bb7;
+      background: #fff;
+      color: #f47bb7;
+      border-radius: 6px;
+      padding: 7px 32px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .edit-btn:hover {
+      background: #f47bb7;
+      color: #fff;
+    }
+    .change-password-section {
+      margin-top: 18px;
+    }
+    .change-password-btn {
+      border: 1.5px solid #f47bb7;
+      background: #fff;
+      color: #f47bb7;
+      border-radius: 6px;
+      padding: 7px 32px;
+      font-size: 1rem;
+      cursor: pointer;
+      float: right;
+      margin-top: 10px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .change-password-btn:hover {
+      background: #f47bb7;
+      color: #fff;
+    }
+    @media (max-width: 700px) {
+      .basic-info-grid {
+        grid-template-columns: 1fr;
+      }
+      .edit-btn, .change-password-btn {
+        float: none;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Account Details</h2>
+    <div class="subtitle">
+      Manage your account details—including name, ID, role, and email—effortlessly in one secure place.
+    </div>
+
+    <div class="card">
+      <div class="profile-section">
+        <div class="avatar">
+          <span>👤</span>
+        </div>
+        <div class="profile-buttons">
+          <button>
+            <span>📁</span> Upload Photo
+          </button>
+          <button>
+            <span>🗑️</span> Remove
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Basic Information</div>
+      <div class="basic-info-grid">
+        <div class="form-group">
+          <label for="name">NAME</label>
+          <input type="text" id="name" value="Eric A. Moreno" readonly>
+        </div>
+        <div class="form-group">
+          <label for="role">ROLE</label>
+          <input type="text" id="role" value="Music Dean" readonly>
+        </div>
+        <div class="form-group">
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" value="email@uic.edu.ph" readonly>
+        </div>
+        <div class="form-group">
+          <label for="phone">PHONE NO.</label>
+          <input type="text" id="phone" value="09123456789" readonly>
+        </div>
+      </div>
+      <button class="edit-btn">Edit</button>
+      <div style="clear: both;"></div>
+    </div>
+
+    <div class="card change-password-section">
+      <div class="section-title">Change Password</div>
+      <div style="font-size: 0.97rem; color: #444; margin-bottom: 10px;">
+        To keep your account secure, please remember to update your password regularly.
+      </div>
+      <div style="font-size: 0.97rem; color: #444;">
+        Click the 'Change Password' button below to set a new password.
+      </div>
+      <button class="change-password-btn">Change Password</button>
+      <div style="clear: both;"></div>
+    </div>
+  </div>
+</body>
+</html>

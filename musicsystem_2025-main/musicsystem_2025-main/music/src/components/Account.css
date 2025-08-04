@@ -1,0 +1,174 @@
+body {
+  background: #f8f9fb;
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.account-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.account-container h2 {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.account-container .subtitle {
+  color: #555;
+  font-size: 0.98rem;
+  margin-bottom: 30px;
+  margin-top: 8px;
+}
+
+.account-container .card {
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  padding: 28px 28px 22px 28px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background: #ffe0ef;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #ff6baf;
+  border: 1.5px solid #ff6baf;
+}
+
+.profile-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-buttons button {
+  border: 1px solid #ff6baf;
+  background: #fff;
+  color: #ff6baf;
+  border-radius: 6px;
+  padding: 6px 18px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-buttons button:first-child {
+  background: #ffe0ef;
+  color: #ff6baf;
+  border: 1.5px solid #ff6baf;
+}
+
+.profile-buttons button:hover {
+  background: #ff6baf;
+  color: #fff;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.basic-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+  margin-bottom: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.93rem;
+  color: #555;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.form-group input {
+  padding: 10px 14px;
+  border: 1.5px solid #e3e3e3;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafbfc;
+  color: #222;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-group input:focus {
+  border: 1.5px solid #ff6baf;
+}
+
+.edit-btn {
+  margin-top: 8px;
+  float: right;
+  border: 1.5px solid #ff6baf;
+  background: #fff;
+  color: #ff6baf;
+  border-radius: 6px;
+  padding: 7px 32px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.edit-btn:hover {
+  background: #ff6baf;
+  color: #fff;
+}
+
+.change-password-section {
+  margin-top: 18px;
+}
+
+.change-password-btn {
+  border: 1.5px solid #ff6baf;
+  background: #fff;
+  color: #ff6baf;
+  border-radius: 6px;
+  padding: 7px 32px;
+  font-size: 1rem;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.change-password-btn:hover {
+  background: #ff6baf;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .basic-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .edit-btn, .change-password-btn {
+    float: none;
+    width: 100%;
+  }
+}

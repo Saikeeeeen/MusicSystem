@@ -1,0 +1,103 @@
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #faf9fa;
+  margin: 0;
+  padding: 0;
+}
+.student-information-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 32px 24px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.desc {
+  color: #888;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+
+.usage-levels {
+  font-size: 0.95rem;
+}
+.usage-dot {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.dot-green { background: #b6f5c6; border: 1px solid #4ecb71;}
+.dot-yellow { background: #fff7b2; border: 1px solid #ffe066;}
+.dot-orange { background: #ffe6a7; border: 1px solid #ffb347;}
+.dot-red { background: #ffd6d6; border: 1px solid #ff6b6b;}
+.actions {
+  margin-bottom: 10px;
+}
+.actions button {
+  background: #ff6fae;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.actions button.add-student-btn {
+  background: #ff6fae;
+}
+
+.actions button.remove-student-btn {
+  background: #ff6b6b;
+  margin-left: 10px;
+}
+.search-bar {
+  float: right;
+  margin-bottom: 10px;
+}
+.search-bar input {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.98rem;
+}
+th, td {
+  padding: 10px 8px;
+  text-align: left;
+}
+th {
+  background: #faf9fa;
+  color: #888;
+  font-weight: 600;
+  font-size: 0.97rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+/* Row color coding */
+.row-green { background: #eafaf1; }
+.row-yellow { background: #fffbe6; }
+.row-orange { background: #fff5e6; }
+.row-red { background: #ffeaea; color: #d7263d; font-weight: 600;}
+tr:not(:last-child) td { border-bottom: 1px solid #f0f0f0; }
+@media (max-width: 700px) {
+  .container { padding: 10px 2px; }
+  .filters-usage { flex-direction: column; gap: 10px;}
+  .search-bar { float: none; display: block; margin-bottom: 10px;}
+  table, thead, tbody, th, td, tr { display: block; }
+  th, td { padding: 8px 4px; }
+  th { border-bottom: none; }
+}
